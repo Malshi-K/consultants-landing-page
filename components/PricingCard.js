@@ -1,0 +1,292 @@
+// PricingCard.jsx
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+
+const PricingCard = () => {
+  const [screenSize, setScreenSize] = useState({
+    isMobile: false,
+    isTablet: false,
+    isDesktop: false,
+  });
+
+  const [formData, setFormData] = useState({
+    firstname: "", // Changed from full_name to firstname to match HubSpot property
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState("idle");
+  const [formMessage, setFormMessage] = useState("");
+
+  useEffect(() => {
+    // Function to update screen size state
+    const updateScreenSize = () => {
+      const width = window.innerWidth;
+      setScreenSize({
+        isMobile: width < 640,
+        isTablet: width >= 640 && width < 1024,
+        isDesktop: width >= 1024,
+      });
+    };
+
+    // Initial size detection
+    updateScreenSize();
+
+    // Set up resize listener
+    window.addEventListener("resize", updateScreenSize);
+
+    // Clean up event listener
+    return () => window.removeEventListener("resize", updateScreenSize);
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+
+    // Use the HubSpot form API endpoint
+    const endpoint =
+      "https://api.hsforms.com/submissions/v3/integration/submit/6187835/80a5a13f-357d-419f-be76-78b73bd0cd59";
+
+    try {
+      // Map field names correctly according to HubSpot property names
+      const payload = {
+        fields: [
+          // Using the correct HubSpot property name "firstname"
+          { name: "firstname", value: formData.firstname },
+          { name: "email", value: formData.email },
+          { name: "phone", value: formData.phone },
+          { name: "message", value: formData.message },
+        ],
+        context: {
+          pageUri: window.location.href,
+          pageName: "Website Development Pricing",
+        },
+        // Add this to ensure notifications are sent
+        legalConsentOptions: {
+          consent: {
+            consentToProcess: true,
+            text: "I agree to allow GDC Digital Solutions to store and process my personal data.",
+          },
+        },
+      };
+
+      console.log("Submitting form with payload:", payload);
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const responseData = await response.json();
+      console.log("HubSpot API response:", responseData);
+
+      if (response.ok) {
+        // Track form submission conversion if needed
+        if (typeof window !== "undefined" && window.gtag) {
+          window.gtag("event", "conversion", {
+            send_to: "AW-16917143672/LaiLCKf31asaEPjA3II_",
+          });
+        }
+
+        setFormStatus("success");
+        setFormMessage("Thank you! We'll be in touch soon.");
+        setFormData({
+          firstname: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        console.error("Form submission error:", responseData);
+        setFormStatus("error");
+        setFormMessage(
+          responseData.message ||
+            "There was an issue with your submission. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Form submission exception:", error);
+      setFormStatus("error");
+      setFormMessage(
+        "There was an error submitting the form. Please check your internet connection and try again."
+      );
+    }
+  };
+
+  return (
+    <div className="bg-white/80 w-full rounded-xl shadow-xl overflow-hidden backdrop-blur-sm">
+      <div className="mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8">
+        {/* Header Text - Responsive sizing */}
+        <div className="mb-4 sm:mb-5 text-center">
+          <h2 className="text-customGray font-bold mb-2 sm:mb-3 text-3xl sm:text-4xl leading-tight">
+            Is cost affecting your decision?
+          </h2>
+          <p className="text-gray-900 text-sm sm:text-base mb-3 max-w-xl mx-auto">
+            We&apos;re offering special rates for small business&apos;s looking
+            to grow their online presence. Contact us today to learn more about
+            our services and how we can help your business thrive.
+          </p>
+        </div>
+
+        {/* Card with proper sizing - white background and yellow border matching screenshot */}
+        <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 text-center mx-auto">
+          {/* Header Text */}
+          <div className="mb-4 sm:mb-6">
+            <p className="text-yellow-500 font-bold mb-1 text-lg sm:text-xl">
+              Limited Time April Offer!
+            </p>
+          </div>
+
+          {/* Pricing Section - with correct yellow color and sizing */}
+          <div className="mb-5 sm:mb-6">
+            <p className="text-gray-700 text-base sm:text-lg mb-1 sm:mb-2">
+              Complete Website + SEO
+            </p>
+            <div className="flex justify-center items-baseline flex-wrap">
+              <p className="text-gray-700 text-base sm:text-lg mr-2">for</p>
+              <p className="text-yellow-500 text-4xl sm:text-5xl font-bold">
+                NZD $500+GST
+              </p>
+            </div>
+          </div>
+
+          {/* Form Section with improved text visibility */}
+          <div className="w-full">
+            <form onSubmit={handleSubmit} className="space-y-4 text-left">
+              {/* Name field with improved text visibility - using firstname instead of full_name */}
+              <div className="bg-gray-100 rounded-lg p-1">
+                <input
+                  type="text"
+                  name="firstname"
+                  value={formData.firstname}
+                  onChange={handleChange}
+                  placeholder="Name"
+                  className="w-full p-2 bg-gray-100 text-gray-900 font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                  required
+                />
+              </div>
+
+              {/* Email field with improved text visibility */}
+              <div className="bg-gray-100 rounded-lg p-1">
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email Address*"
+                  className="w-full p-2 bg-gray-100 text-gray-900 font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                  required
+                />
+              </div>
+
+              {/* Phone field with improved text visibility */}
+              <div className="flex bg-gray-100 rounded-lg p-1">
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Phone Number"
+                  className="w-full p-2 bg-gray-100 text-gray-900 font-medium rounded-r-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                />
+              </div>
+
+              {/* Message field with improved text visibility */}
+              <div className="bg-gray-100 rounded-lg p-1">
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Message"
+                  className="w-full p-2 bg-gray-100 text-gray-900 font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 h-24 resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={formStatus === "submitting"}
+                className={`w-full py-3 ${
+                  formStatus === "submitting"
+                    ? "bg-gray-400"
+                    : "bg-customYellow hover:bg-customGray"
+                } text-white rounded-lg font-medium transition duration-300`}
+              >
+                {formStatus === "submitting" ? "Submitting..." : "Submit"}
+              </button>
+            </form>
+
+            {formStatus === "success" && (
+              <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg">
+                {formMessage}
+              </div>
+            )}
+
+            {formStatus === "error" && (
+              <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-lg">
+                {formMessage}
+              </div>
+            )}
+          </div>
+
+          {/* Footer - Enhanced for responsive layout with proper icons */}
+          <div className="flex flex-row justify-center items-center mt-6 space-x-4 sm:space-x-6">
+            <div className="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                />
+              </svg>
+              <span className="text-gray-700 text-sm sm:text-base">
+                Starter Package
+              </span>
+            </div>
+
+            <div className="h-5 w-px bg-gray-300"></div>
+
+            <div className="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                />
+              </svg>
+              <span className="text-gray-700 text-sm sm:text-base">
+                Free concept draft
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PricingCard;
