@@ -84,8 +84,8 @@ const Header = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/Digital Solution Logo.webp"
-              alt="GDC Digital Solutions Logo"
+              src="/images/logo.webp"
+              alt="GDC Consultants"
               width={240}
               height={60}
               className="h-auto w-auto max-w-[160px] sm:max-w-[180px] md:max-w-[200px] lg:max-w-[240px]"
