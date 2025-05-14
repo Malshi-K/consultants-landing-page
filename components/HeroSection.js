@@ -267,7 +267,7 @@ const HeroSection = ({ RightSideComponent }) => {
           <div className="w-full md:w-1/2">
             <div className="text-left">
               {/* Using the dynamic heading size function */}
-              <h1
+              <h3
                 className={`${getHeadingSize()} font-bold leading-none text-white`}
               >
                 <span>Engineering Safer Structures for</span>
@@ -293,7 +293,7 @@ const HeroSection = ({ RightSideComponent }) => {
                     </div>
                   </div>
                 </div>
-              </h1>
+              </h3>
 
               {/* Description text with circular button positioned to the right */}
               <div className="mt-6 sm:mt-8 mb-6 text-left max-w-xl relative">
