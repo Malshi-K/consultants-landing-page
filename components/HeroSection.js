@@ -174,7 +174,7 @@ const HeroSection = ({ RightSideComponent }) => {
             font-size: 4rem;
             height: 100px;
             padding: 10px 24px;
-            color: white
+            color: white;
           }
         }
 
@@ -209,7 +209,7 @@ const HeroSection = ({ RightSideComponent }) => {
           transform: translate(-50%, -50%);
           width: 70px;
           height: 70px;
-          background-color: #044E80;
+          background-color: #044e80;
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -297,7 +297,7 @@ const HeroSection = ({ RightSideComponent }) => {
 
               {/* Description text with circular button positioned to the right */}
               <div className="mt-6 sm:mt-8 mb-6 text-left max-w-xl relative">
-                <p className="text-white text-xl leading-relaxed pr-16 sm:pr-32">                  
+                <p className="text-white text-xl leading-relaxed pr-16 sm:pr-32">
                   GDC Consultants delivers practical and compliant engineering
                   solutions to ensure your buildings stand the test of time—and
                   nature.
