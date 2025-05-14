@@ -305,7 +305,7 @@ const HeroSection = ({ RightSideComponent }) => {
 
                 {/* Circular text button with more responsive positioning */}
                 <div className="circular-text-container absolute top-0 right-0 sm:top-1/2 sm:-translate-y-1/2 transform scale-80 sm:scale-90 md:scale-100 origin-top-right">
-                  <Link href="tel:0212463988" className="block w-full h-full">
+                  <Link href="tel:+6478380090" className="block w-full h-full">
                     <div className="rotating-text">
                       <svg viewBox="0 0 100 100" width="100%" height="100%">
                         <defs>
