@@ -93,11 +93,11 @@ const PricingCard = () => {
 
       if (response.ok) {
         // Track form submission conversion if needed
-        if (typeof window !== "undefined" && window.gtag) {
-          window.gtag("event", "conversion", {
-            send_to: "AW-16917143672/LaiLCKf31asaEPjA3II_",
-          });
-        }
+        // if (typeof window !== "undefined" && window.gtag) {
+        //   window.gtag("event", "conversion", {
+        //     send_to: "AW-16917143672/LaiLCKf31asaEPjA3II_",
+        //   });
+        // }
 
         setFormStatus("success");
         setFormMessage("Thank you! We'll be in touch soon.");

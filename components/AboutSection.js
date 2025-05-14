@@ -58,7 +58,7 @@ const AboutSection = () => {
           About Us
         </h1>
         <h2
-          className="text-4xl text-customBlue font-bold mt-2 mb-4 transition-all duration-700 ease-out delay-100"
+          className="text-4xl text-customYellow font-bold mt-2 mb-4 transition-all duration-700 ease-out delay-100"
         >
           GDC Consultants LTD
         </h2>
