@@ -13,8 +13,8 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "GDC Digital Solutions",
-  description: "GDC Digital Solutions | Expert Web Design",
+  title: "GDC Consultants",
+  description: "GDC Consultants | Engineering Solutions",
 };
 
 export default function RootLayout({ children }) {

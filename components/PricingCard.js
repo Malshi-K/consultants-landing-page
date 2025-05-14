@@ -53,7 +53,7 @@ const PricingCard = () => {
 
     // Use the HubSpot form API endpoint
     const endpoint =
-      "https://api.hsforms.com/submissions/v3/integration/submit/6187835/80a5a13f-357d-419f-be76-78b73bd0cd59";
+      "https://api.hsforms.com/submissions/v3/integration/submit/6187835/5ab46a54-d6a7-458d-a847-f1567845027d";
 
     try {
       // Map field names correctly according to HubSpot property names
