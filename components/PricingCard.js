@@ -130,12 +130,14 @@ const PricingCard = () => {
         {/* Header Text - Responsive sizing */}
         <div className="mb-4 sm:mb-5 text-center">
           <h2 className="text-customBlue font-bold mb-2 sm:mb-3 text-3xl sm:text-4xl leading-tight">
-            Is cost affecting your decision?
+            Need Expert Engineering Solutions?
           </h2>
           <p className="text-gray-900 text-sm sm:text-base mb-3 max-w-xl mx-auto">
-            We&apos;re offering special rates for small business&apos;s looking
-            to grow their online presence. Contact us today to learn more about
-            our services and how we can help your business thrive.
+            Our team of structural, geotechnical, and seismic engineering
+            experts is ready to help with your project. Whether you're building
+            a new structure or needing assessment of an existing one, we deliver
+            practical and compliant solutions tailored to New Zealand's unique
+            conditions.
           </p>
         </div>
 
