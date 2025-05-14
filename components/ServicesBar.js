@@ -4,10 +4,9 @@ import React, { useEffect, useRef } from 'react';
 const ServicesBar = () => {
   // List of services to display
   const services = [
-    "Website Development",
-    "April Discounted Offer!",
-    "Website Development",
-    "April Discounted Offer!",
+    "15 years experience",
+    "Licensed experts",
+    "Local ground knowledge",
   ];
   
   const scrollContainerRef = useRef(null);
@@ -51,7 +50,7 @@ const ServicesBar = () => {
   const scrollServices = [...services, ...services, ...services];
   
   return (
-    <div className="w-full bg-customYellow py-4 overflow-hidden" ref={scrollContainerRef}>
+    <div className="w-full bg-customBlue py-4 overflow-hidden" ref={scrollContainerRef}>
       {/* CSS for scrolling animation */}
       <style jsx>{`
         @keyframes scrollServices {
@@ -71,7 +70,7 @@ const ServicesBar = () => {
         }
         
         .service-item {
-          color: #333333;
+          color: white;
           font-weight: bold;
           padding: 0 20px;
         }
@@ -90,7 +89,7 @@ const ServicesBar = () => {
             {scrollServices.map((service, index) => (
               <React.Fragment key={index}>
                 <span 
-                  className="service-item text-customGray text-lg"
+                  className="service-item text-customBlue text-lg"
                   data-index={index % services.length}
                 >
                   {service}

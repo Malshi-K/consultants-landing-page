@@ -1,9 +1,9 @@
+// HeroSection.jsx
 "use client";
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import PricingCard from "./PricingCard";
-import Image from "next/image";
 
 const HeroSection = ({ RightSideComponent }) => {
   const [visibleIndex, setVisibleIndex] = useState(0);
@@ -15,9 +15,9 @@ const HeroSection = ({ RightSideComponent }) => {
 
   // Content for the banner
   const content = [
-    { highlighted: "Website Development" },
-    { highlighted: "Website Development" },
-    { highlighted: "Website Development" },
+    { highlighted: "Structural |" },
+    { highlighted: "Geotechnical |" },
+    { highlighted: "Seismic Experts |" },
   ];
 
   const marqueeContainerRef = useRef(null);
@@ -94,9 +94,14 @@ const HeroSection = ({ RightSideComponent }) => {
 
   return (
     <section
-      className="relative transition-all duration-300 overflow-hidden"
+      className="relative transition-all duration-300 overflow-hidden bg-black bg-opacity-80"
       style={{
         minHeight: screenSize.isMobile ? "auto" : "100vh",
+        backgroundImage: "url('/images/hero-bg.webp')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundBlendMode: "overlay",
       }}
     >
       <style jsx>{`
@@ -111,7 +116,7 @@ const HeroSection = ({ RightSideComponent }) => {
 
         .scroll-container {
           position: relative;
-          background-color: #ffbf00;
+          background-color: #044e80;
           border-radius: 9999px;
           overflow: hidden;
           width: 100%;
@@ -169,6 +174,7 @@ const HeroSection = ({ RightSideComponent }) => {
             font-size: 4rem;
             height: 100px;
             padding: 10px 24px;
+            color: white
           }
         }
 
@@ -203,7 +209,7 @@ const HeroSection = ({ RightSideComponent }) => {
           transform: translate(-50%, -50%);
           width: 70px;
           height: 70px;
-          background-color: #ffb500;
+          background-color: #044E80;
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -264,9 +270,10 @@ const HeroSection = ({ RightSideComponent }) => {
               <h1
                 className={`${getHeadingSize()} font-bold leading-none text-white`}
               >
-                <span>Get This</span>
+                <span>Engineering Safer Structures for</span>
                 <br />
-                <span>Ultimate Benefit</span>
+
+                <span>New Zealand's Future</span>
                 {/* Single yellow container with scrolling words */}
                 <div className="my-4">
                   <div
@@ -290,9 +297,10 @@ const HeroSection = ({ RightSideComponent }) => {
 
               {/* Description text with circular button positioned to the right */}
               <div className="mt-6 sm:mt-8 mb-6 text-left max-w-xl relative">
-                <p className="text-white text-xl leading-relaxed pr-16 sm:pr-20">
-                  We&apos;re here to help small business&apos;s grow and thrive,
-                  give us a ring to discuss our simple and affordable plans
+                <p className="text-white text-xl leading-relaxed pr-16 sm:pr-32">                  
+                  GDC Consultants delivers practical and compliant engineering
+                  solutions to ensure your buildings stand the test of time—and
+                  nature.
                 </p>
 
                 {/* Circular text button with more responsive positioning */}
@@ -313,7 +321,7 @@ const HeroSection = ({ RightSideComponent }) => {
                           letterSpacing="1"
                         >
                           <textPath xlinkHref="#circle-path" textLength="250">
-                            • GDC DIGITAL SOLUTIONS AGENCY
+                            • GDC CONSULTANTS
                           </textPath>
                         </text>
                       </svg>

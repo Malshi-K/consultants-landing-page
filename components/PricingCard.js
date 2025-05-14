@@ -129,7 +129,7 @@ const PricingCard = () => {
       <div className="mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8">
         {/* Header Text - Responsive sizing */}
         <div className="mb-4 sm:mb-5 text-center">
-          <h2 className="text-customGray font-bold mb-2 sm:mb-3 text-3xl sm:text-4xl leading-tight">
+          <h2 className="text-customBlue font-bold mb-2 sm:mb-3 text-3xl sm:text-4xl leading-tight">
             Is cost affecting your decision?
           </h2>
           <p className="text-gray-900 text-sm sm:text-base mb-3 max-w-xl mx-auto">
@@ -141,26 +141,6 @@ const PricingCard = () => {
 
         {/* Card with proper sizing - white background and yellow border matching screenshot */}
         <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 text-center mx-auto">
-          {/* Header Text */}
-          <div className="mb-4 sm:mb-6">
-            <p className="text-yellow-500 font-bold mb-1 text-lg sm:text-xl">
-              Limited Time April Offer!
-            </p>
-          </div>
-
-          {/* Pricing Section - with correct yellow color and sizing */}
-          <div className="mb-5 sm:mb-6">
-            <p className="text-gray-700 text-base sm:text-lg mb-1 sm:mb-2">
-              Complete Website + SEO
-            </p>
-            <div className="flex justify-center items-baseline flex-wrap">
-              <p className="text-gray-700 text-base sm:text-lg mr-2">for</p>
-              <p className="text-yellow-500 text-4xl sm:text-5xl font-bold">
-                NZD $500+GST
-              </p>
-            </div>
-          </div>
-
           {/* Form Section with improved text visibility */}
           <div className="w-full">
             <form onSubmit={handleSubmit} className="space-y-4 text-left">
@@ -219,7 +199,7 @@ const PricingCard = () => {
                 className={`w-full py-3 ${
                   formStatus === "submitting"
                     ? "bg-gray-400"
-                    : "bg-customYellow hover:bg-customGray"
+                    : "bg-customBlue hover:bg-customBlue"
                 } text-white rounded-lg font-medium transition duration-300`}
               >
                 {formStatus === "submitting" ? "Submitting..." : "Submit"}
@@ -237,51 +217,6 @@ const PricingCard = () => {
                 {formMessage}
               </div>
             )}
-          </div>
-
-          {/* Footer - Enhanced for responsive layout with proper icons */}
-          <div className="flex flex-row justify-center items-center mt-6 space-x-4 sm:space-x-6">
-            <div className="flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                />
-              </svg>
-              <span className="text-gray-700 text-sm sm:text-base">
-                Starter Package
-              </span>
-            </div>
-
-            <div className="h-5 w-px bg-gray-300"></div>
-
-            <div className="flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                />
-              </svg>
-              <span className="text-gray-700 text-sm sm:text-base">
-                Free concept draft
-              </span>
-            </div>
           </div>
         </div>
       </div>
