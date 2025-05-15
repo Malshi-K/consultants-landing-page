@@ -24,25 +24,28 @@ const icons = {
   ),
 };
 
-// Define services with dynamically imported icons
+// Updated services with external URLs
 const services = [
   {
     title: "Structural Engineering",
     description:
       "At GDC Consultants, we match every structure with a redesign that is innovative and responsive to changing demands. From large corporate structures to distinctive home designs – we create a masterpiece every time.",
     icon: icons.BuildingOfficeIcon,
+    url: "https://gdcgroup.co.nz/services/structural-engineering"
   },
   {
     title: "Geotechnical Engineering",
     description:
       "We strive to design safe and effective retention systems and foundations, employing our extensive expertise and experience and a pragmatic approach.",
     icon: icons.ScaleIcon,
+    url: "https://gdcgroup.co.nz/services/geotechnical-engineering"
   },
   {
     title: "Seismic Engineering",
     description:
       "At GDC Consultants, our commitment to Seismic engineering excellence in New Zealand sets us apart. With a wealth of expertise, we specialize in crafting robust designs for buildings and structures, ensuring their resilience to seismic activity.",
     icon: icons.WrenchScrewdriverIcon,
+    url: "https://gdcgroup.co.nz/services/seismic-engineering"
   },
 ];
 
@@ -96,34 +99,41 @@ const ServicesSection = () => {
         {services.map((service, index) => {
           const IconComponent = service.icon; // Use dynamically imported icon component
           return (
-            <div
+            <a
               key={index}
-              className={`relative bg-white shadow-md overflow-hidden transition duration-300 group flex flex-col items-center border-b-4 border-customBlue transform ${
-                isVisible
-                  ? "opacity-100 transform-none"
-                  : "opacity-0 translate-y-12"
-              }`}
-              style={{
-                transitionProperty: "all",
-                transitionDuration: "500ms",
-                transitionTimingFunction: "ease-out",
-                transitionDelay: `${index * 30}ms`,
-              }}
+              href={service.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-decoration-none h-full"
             >
-              {/* Sliding background effect */}
-              <div className="absolute inset-0 bg-white"></div>
-              <div className="flex flex-col items-center p-4 z-10 relative group-hover:text-white">
-                <div className="bg-white rounded-full p-3 shadow-lg transition duration-300 group-hover:bg-customYellow group-hover:text-white animate-fade-in">
-                  <IconComponent className="w-12 h-12 text-customBlue group-hover:text-white animate-scale-up" />
+              <div
+                className={`relative bg-white shadow-md overflow-hidden transition duration-300 group flex flex-col items-center border-b-4 border-customBlue transform cursor-pointer h-full ${
+                  isVisible
+                    ? "opacity-100 transform-none"
+                    : "opacity-0 translate-y-12"
+                } hover:shadow-lg`}
+                style={{
+                  transitionProperty: "all",
+                  transitionDuration: "500ms",
+                  transitionTimingFunction: "ease-out",
+                  transitionDelay: `${index * 30}ms`,
+                }}
+              >
+                {/* Sliding background effect */}
+                <div className="absolute inset-0 bg-white"></div>
+                <div className="flex flex-col items-center p-4 z-10 relative group-hover:text-white h-full w-full flex-grow">
+                  <div className="bg-white rounded-full p-3 shadow-lg transition duration-300 group-hover:bg-customYellow group-hover:text-white animate-fade-in">
+                    <IconComponent className="w-12 h-12 text-customBlue group-hover:text-white animate-scale-up" />
+                  </div>
+                  <h4 className="text-lg font-bold mt-3 text-center text-customBlue group-hover:text-customYellow animate-fade-in">
+                    {service.title}
+                  </h4>
+                  <p className="font-semibold mt-3 text-center text-customBlue group-hover:text-customYellow animate-fade-in flex-grow">
+                    {service.description}
+                  </p>
                 </div>
-                <h4 className="text-lg font-bold mt-3 text-center text-customBlue group-hover:text-customYellow animate-fade-in">
-                  {service.title}
-                </h4>
-                <p className="font-semibold mt-3 text-center text-customBlue group-hover:text-customYellow animate-fade-in">
-                  {service.description}
-                </p>
               </div>
-            </div>
+            </a>
           );
         })}
       </div>
