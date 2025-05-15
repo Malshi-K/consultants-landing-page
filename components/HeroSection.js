@@ -137,7 +137,7 @@ const HeroSection = ({ RightSideComponent }) => {
 
         .scroll-word {
           color: #333333;
-          font-weight: 500;
+          font-weight: bold;
           padding: 0 20px; /* Decreased padding */
           display: inline-flex;
           align-items: center;
@@ -321,11 +321,15 @@ const HeroSection = ({ RightSideComponent }) => {
                         <text
                           fontSize="11"
                           fontWeight="600"
-                          fill="#FFB500"
-                          letterSpacing="1"
+                          fill="white"
+                          letterSpacing="2"
                         >
-                          <textPath xlinkHref="#circle-path" textLength="250">
-                            • GDC CONSULTANTS
+                          <textPath
+                            xlinkHref="#circle-path"
+                            startOffset="0%"
+                            textLength="251"
+                          >
+                            • CALL • US • NOW&nbsp;
                           </textPath>
                         </text>
                       </svg>
@@ -337,7 +341,7 @@ const HeroSection = ({ RightSideComponent }) => {
                         height="24"
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="#FFB500" // Changed from #000000 to #FFB500
+                        stroke="white"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
