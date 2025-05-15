@@ -84,9 +84,9 @@ const HeroSection = ({ RightSideComponent }) => {
 
   // Updated heading sizes with better size scaling for each device
   const getHeadingSize = () => {
-    if (screenSize.isMobile) return "text-5xl";
-    if (screenSize.isTablet) return "text-6xl";
-    return "text-7xl";
+    if (screenSize.isMobile) return "text-3xl";
+    if (screenSize.isTablet) return "text-4xl";
+    return "text-5xl";
   };
 
   // Create duplicated content for continuous scrolling
@@ -120,7 +120,7 @@ const HeroSection = ({ RightSideComponent }) => {
           border-radius: 9999px;
           overflow: hidden;
           width: 100%;
-          max-width: 900px;
+          max-width: 700px; /* Decreased from 900px */
           margin: 0 auto;
           z-index: 1;
           display: flex;
@@ -138,7 +138,7 @@ const HeroSection = ({ RightSideComponent }) => {
         .scroll-word {
           color: #333333;
           font-weight: 500;
-          padding: 0 24px;
+          padding: 0 20px; /* Decreased padding */
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -148,33 +148,33 @@ const HeroSection = ({ RightSideComponent }) => {
         /* Custom responsive font size with better vertical alignment */
         @media (max-width: 640px) {
           .scroll-word {
-            font-size: 2.25rem;
-            height: 65px;
-            padding: 0 15px;
+            font-size: 1.75rem; /* Decreased from 2.25rem */
+            height: 50px; /* Decreased from 65px */
+            padding: 0 12px; /* Decreased from 15px */
           }
           .scroll-container {
             max-width: 100%;
-            border-radius: 30px;
+            border-radius: 25px; /* Decreased from 30px */
           }
         }
 
         @media (min-width: 641px) and (max-width: 1023px) {
           .scroll-word {
-            font-size: 3.25rem;
-            height: 90px;
-            padding: 0 20px;
+            font-size: 2.5rem; /* Decreased from 3.25rem */
+            height: 70px; /* Decreased from 90px */
+            padding: 0 16px; /* Decreased from 20px */
           }
           .scroll-container {
-            max-width: 95%;
+            max-width: 90%; /* Decreased from 95% */
           }
         }
 
         @media (min-width: 1024px) {
           .scroll-word {
-            font-size: 4rem;
-            height: 100px;
-            padding: 10px 24px;
-            color: white;
+            font-size: 3rem; /* Decreased from 4rem */
+            height: 80px; /* Decreased from 100px */
+            padding: 8px 20px; /* Decreased from 10px 24px */
+            color: #ffb500;
           }
         }
 
@@ -190,8 +190,8 @@ const HeroSection = ({ RightSideComponent }) => {
 
         .circular-text-container {
           position: absolute;
-          width: 120px;
-          height: 120px;
+          width: 100px; /* Decreased from 120px */
+          height: 100px; /* Decreased from 120px */
           z-index: 20;
         }
 
@@ -207,8 +207,8 @@ const HeroSection = ({ RightSideComponent }) => {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 70px;
-          height: 70px;
+          width: 60px; /* Decreased from 70px */
+          height: 60px; /* Decreased from 70px */
           background-color: #044e80;
           border-radius: 50%;
           display: flex;
@@ -216,7 +216,7 @@ const HeroSection = ({ RightSideComponent }) => {
           justify-content: center;
           transition: transform 0.3s ease;
           z-index: 2;
-          padding: 10px;
+          padding: 8px; /* Decreased from 10px */
         }
 
         .circular-button:hover {
@@ -226,27 +226,27 @@ const HeroSection = ({ RightSideComponent }) => {
         /* Add responsive styles for the circular button */
         @media (max-width: 640px) {
           .circular-text-container {
-            width: 100px;
-            height: 100px;
+            width: 80px; /* Decreased from 100px */
+            height: 80px; /* Decreased from 100px */
             top: 0 !important;
             right: 0 !important;
           }
 
           .circular-button {
-            width: 60px;
-            height: 60px;
+            width: 50px; /* Decreased from 60px */
+            height: 50px; /* Decreased from 60px */
           }
         }
 
         @media (max-width: 480px) {
           .circular-text-container {
-            width: 90px;
-            height: 90px;
+            width: 70px; /* Decreased from 90px */
+            height: 70px; /* Decreased from 90px */
           }
 
           .circular-button {
-            width: 50px;
-            height: 50px;
+            width: 40px; /* Decreased from 50px */
+            height: 40px; /* Decreased from 50px */
           }
         }
       `}</style>
@@ -270,12 +270,16 @@ const HeroSection = ({ RightSideComponent }) => {
               <h3
                 className={`${getHeadingSize()} font-bold leading-none text-white`}
               >
-                <span>Engineering Safer Structures for</span>
+                <span>Resilient by Design:</span>
                 <br />
+                <span>Structural Engineering</span>
+                <br />
+                <span>for a Safer,</span>
+                <br />
+                <span>Stronger Future for Aotearoa</span>
 
-                <span>New Zealand's Future</span>
                 {/* Single yellow container with scrolling words */}
-                <div className="my-4">
+                <div className="my-3">
                   <div
                     className="scroll-container mx-auto md:ml-0"
                     ref={marqueeContainerRef}
@@ -317,7 +321,7 @@ const HeroSection = ({ RightSideComponent }) => {
                         <text
                           fontSize="11"
                           fontWeight="600"
-                          fill="white"
+                          fill="#FFB500"
                           letterSpacing="1"
                         >
                           <textPath xlinkHref="#circle-path" textLength="250">
@@ -327,14 +331,13 @@ const HeroSection = ({ RightSideComponent }) => {
                       </svg>
                     </div>
                     <div className="circular-button">
-                      {/* More balanced headset icon with reduced boldness and proper padding */}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="#000000"
+                        stroke="#FFB500" // Changed from #000000 to #FFB500
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"

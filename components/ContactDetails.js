@@ -10,8 +10,8 @@ const contactDetails = [
     id: 1,
     title: "CONTACT US",
     description: "Our friendly team is here to help.",
-    contactInfo: "hamilton@gdcgroup.co.nz",
-    link: "mailto:hamilton@gdcgroup.co.nz",
+    contactInfo: "info@gdcgroup.co.nz",
+    link: "mailto:info@gdcgroup.co.nz",
     icon: <EnvelopeIcon/>, 
   },
   {

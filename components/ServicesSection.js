@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic"; // Dynamic import for optimized loading
+import Link from "next/link";
 
 // Dynamically import icons to improve initial load performance
 const icons = {
@@ -126,10 +127,16 @@ const ServicesSection = () => {
           );
         })}
       </div>
+
       <div className="mt-12 text-center">
-        <button className="inline-block bg-customBlue hover:bg-customYellow text-white py-3 px-8 rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-lg font-medium">
+        <a
+          href="https://gdcgroup.co.nz/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-customBlue hover:bg-customYellow text-white py-3 px-8 rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-lg font-medium"
+        >
           Check for other services
-        </button>
+        </a>
       </div>
     </section>
   );
